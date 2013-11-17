@@ -10,8 +10,8 @@ public class EntrevistaModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int codEntrevista;
-	private String pretensaoSalarial;
 	private EventoSeletivoModel eventoSeletivoModel;
+	private String pretensaoSalarial;
 
 	public Boolean salvar(List<EntrevistaModel> element) {
 		return DaoFactory.get(EntrevistaModel.class).addListObj(element);

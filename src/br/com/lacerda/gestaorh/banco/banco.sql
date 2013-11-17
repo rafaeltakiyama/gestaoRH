@@ -1,65 +1,78 @@
-
-CREATE TABLE IF NOT EXISTS tbrodada(
-	codRodada integer primary key autoincrement,
-  numeroRodada integer not null,
-	codCampeonatoRodada integer,
-	FOREIGN KEY(codCampeonatoRodada) REFERENCES tbcampeonato(codCampeonato)
+CREATE TABLE IF NOT EXISTS tbareaatuacao(
+	codArea integer primary key autoincrement,
+	nomeArea TEXT
 	);
-CREATE UNIQUE INDEX idx_tbrodada on tbrodada(codRodada);
+CREATE UNIQUE INDEX idx_tbareaatuacao on tbareaatuacao(codArea);
 
-
-CREATE TABLE IF NOT EXISTS tbpartida(               
-	codPartida integer primary key autoincrement,            
-    codRodadaPartida integer,                         
-    codJuizPartida integer,                      
-  	codEstadioPartida integer,                   
-  	codTime1Partida integer,                     
-  	codTime2Partida integer,                     
-  FOREIGN KEY(codRodadaPartida) REFERENCES [tbrodada]([codRodada]),
-	FOREIGN KEY(codJuizPartida) REFERENCES [tbjuiz]([codJuiz]),
-	FOREIGN KEY(codEstadioPartida) REFERENCES [tbestadio]([codEstadio]),
-	FOREIGN KEY(codTime1Partida) REFERENCES [tbtime]([codTime]),
-	FOREIGN KEY(codTime2Partida) REFERENCES [tbtime]([codTime])
-	);                                                
-CREATE INDEX idx_tbpartida on tbpartida(codPartida);
-
-CREATE TABLE IF NOT EXISTS tbtime(
-	codTime integer primary key autoincrement,
-	nomeTime TEXT
+CREATE TABLE IF NOT EXISTS tbcandidato(
+	codCandidato integer primary key autoincrement,
+  	areaAtuacao integer not null,
+	nome TEXT,
+	cpf TEXT,
+	rg TEXT,
+	data_nasc TEXT,
+	email TEXT,
+	endereco TEXT,
+	escolaridade TEXT,
+	instituicao_ensino TEXT,
+	data_conclusao TEXT,
+	FOREIGN KEY(areaAtuacao) REFERENCES tbareaatuacao(codArea)
 	);
-CREATE UNIQUE INDEX idx_tbtime on tbtime(codTime);
+CREATE UNIQUE INDEX idx_tbcandidato on tbcandidato(codCandidato);
 
-CREATE TABLE IF NOT EXISTS tbcampeonato(
-	codCampeonato integer primary key autoincrement,
-	nomeCampeonato TEXT
-	);
-CREATE UNIQUE INDEX idx_tbcampeonato on tbcampeonato(codCampeonato);
 
-CREATE TABLE IF NOT EXISTS tbestadio(
-	codEstadio integer primary key autoincrement,
-	nomeEstadio TEXT
+CREATE TABLE IF NOT EXISTS tbempresa(
+	codEmpresa integer primary key autoincrement,
+  	areaAtuacao integer not null,
+	nomeEmpresa TEXT,
+	enderecoEmpresa TEXT,
+	emailEmpresa TEXT,
+	FOREIGN KEY(areaAtuacao) REFERENCES tbareaatuacao(codArea)
 	);
-CREATE UNIQUE INDEX idx_tbestadio on tbestadio(codEstadio);
+CREATE UNIQUE INDEX idx_tbempresa on tbempresa(codEmpresa);
 
-CREATE TABLE IF NOT EXISTS tbjogador(
-	codJogador integer primary key autoincrement,
-	nomeJogador TEXT
+CREATE TABLE IF NOT EXISTS tbvaga(
+	codVaga integer primary key autoincrement,
+  	empresaModel integer not null,
+  	areaAtuacao integer not null,
+	nomeVaga TEXT,
+	requisitosVaga TEXT,
+	localVaga TEXT,
+	descriVaga TEXT,
+	dataIniVaga TEXT,
+	FOREIGN KEY(empresaModel) REFERENCES tbempresa(codEmpresa),
+	FOREIGN KEY(areaAtuacao) REFERENCES tbareaatuacao(codArea)
 	);
-CREATE UNIQUE INDEX idx_tbjogador on tbjogador(codJogador);
+CREATE UNIQUE INDEX idx_tbvaga on tbvaga(codVaga);
 
-CREATE TABLE IF NOT EXISTS tbjuiz(
-	codJuiz integer primary key autoincrement,
-	nomeJuiz TEXT
+CREATE TABLE IF NOT EXISTS tbeventoseletivo(
+	codEventoSeletivo integer primary key autoincrement,
+	nomeEventoSeletivo TEXT,
+	descriEventoSeletivo TEXT,
+	notaEventoSeletivo TEXT
 	);
-CREATE UNIQUE INDEX idx_tbjuiz on tbjuiz(codJuiz);
+CREATE UNIQUE INDEX idx_tbeventoseletivo on tbeventoseletivo(codEventoSeletivo);
 
-CREATE TABLE IF NOT EXISTS tb_jogador_time_campeonato(
-  codJogadorTimeCampeonato integer primary key autoincrement,
-	campeonato integer,
-	times integer,
-	jogador integer,
-	FOREIGN KEY(campeonato) REFERENCES tbcampeonato(codCampeonato)
-	FOREIGN KEY(times) REFERENCES [tbtime]([codTime])
-	FOREIGN KEY(jogador) REFERENCES [tbjogador]([codJogador])
+
+CREATE TABLE IF NOT EXISTS tbentrevista(
+	codEntrevista integer primary key autoincrement,
+  	eventoSeletivoModel integer not null,
+	pretensaoSalarial TEXT,
+	FOREIGN KEY(eventoSeletivoModel) REFERENCES tbeventoseletivo(codEvento)
 	);
-CREATE UNIQUE INDEX idx_tb_jogador_time_campeonato on tb_jogador_time_campeonato(codJogadorTimeCampeonato);
+CREATE UNIQUE INDEX idx_tbentrevista on tbentrevista(codEntrevista);
+
+CREATE TABLE IF NOT EXISTS tdselecao(
+	codSelecao integer primary key autoincrement,
+  	candidatoModel integer not null,
+  	areaAtuacaoModel integer not null,
+  	vagaModel integer not null,
+  	empresaModel integer not null,
+  	eventoSeletivoModel integer not null,
+	FOREIGN KEY(candidatoModel) REFERENCES tbcandidato(codCandidato),
+	FOREIGN KEY(areaAtuacaoModel) REFERENCES tbareaatuacao(codArea),
+	FOREIGN KEY(vagaModel) REFERENCES tbvaga(codVaga),
+	FOREIGN KEY(empresaModel) REFERENCES tbempresa(codEmpresa),
+	FOREIGN KEY(eventoSeletivoModel) REFERENCES tbeventoseletivo(codEvento)
+	);
+CREATE UNIQUE INDEX idx_tdselecao on tdselecao(codSelecao);

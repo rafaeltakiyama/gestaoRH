@@ -9,7 +9,7 @@ public class CandidatoModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int cod_candidato;
+	private int codCandidato;
 	private AreaAtuacaoModel areaAtuacaoModel;
 	private String nome;
 	private String cpf;
@@ -25,12 +25,12 @@ public class CandidatoModel implements Serializable {
         return DaoFactory.get(CandidatoModel.class).addListObj(element);
     }
 
-	public int getCod_candidato() {
-		return cod_candidato;
+	public int getCodCandidato() {
+		return codCandidato;
 	}
 
-	public void setCod_candidato(int cod_candidato) {
-		this.cod_candidato = cod_candidato;
+	public void setCodCandidato(int codCandidato) {
+		this.codCandidato = codCandidato;
 	}
 
 	public AreaAtuacaoModel getAreaAtuacaoModel() {

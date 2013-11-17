@@ -13,6 +13,7 @@ public class BancoHelper {
 	public static SQLiteDatabase db;
 
 	public static final int BANCO_VERSION = 1;
+	private static final String TAG = "BancoHelper";
 	
 	private static BancoHelper instance;
 	
@@ -33,7 +34,7 @@ public class BancoHelper {
 			if (db == null || !db.isOpen()) {
 				BancoDados banco = new BancoDados(context, BANCO_VERSION);
 				db = banco.getWritableDatabase();
-				Log.d("BancoHelper", "Opening DB");
+				Log.d(TAG, "Opening DB");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,7 +46,7 @@ public class BancoHelper {
 	public void close(){
 		if(db.isOpen()){
 			db.close();
-			Log.d("BancoHelper", "Closing DB");
+			Log.d(TAG, "Closing DB");
 		}
 	}
 }

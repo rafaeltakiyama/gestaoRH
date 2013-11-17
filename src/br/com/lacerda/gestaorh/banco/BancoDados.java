@@ -12,7 +12,8 @@ import android.util.Log;
 class BancoDados extends SQLiteOpenHelper{ //nao é publica... so quem esta no mesmo pacote enxerga- (BancoHelper) 
 	
 	//so vamos trabalhar com um Banco
-	public static final String BANCO_NOME = "gerenciadorcampeonatos";
+	public static final String BANCO_NOME = "gestaorh";
+	public static final String TAG = "BancoDados";
 	
 
 	public BancoDados(Context context, int version) {
@@ -40,7 +41,7 @@ class BancoDados extends SQLiteOpenHelper{ //nao é publica... so quem esta no me
 				
 			}
 		} catch (Exception e) {
-			Log.e("AGENDA", "Erro criado banco de dados", e);
+			Log.e(TAG, "Erro criado banco de dados", e);
 		}
 		
 	}
@@ -72,7 +73,7 @@ class BancoDados extends SQLiteOpenHelper{ //nao é publica... so quem esta no me
 				
 			}
 		} catch (Exception e) {
-			Log.e("AGENDA", "Erro criado banco de dados", e);
+			Log.e(TAG, "Erro criado banco de dados", e);
 		}
 	}
 	
