@@ -67,7 +67,7 @@ public class SelecaoDao extends Dao<SelecaoModel>{
 		
 		ContentValues values = new ContentValues();
 		
-		values.put("codSelecao", element.getCodSelecao());
+		//values.put("codSelecao", element.getCodSelecao());
 		values.put("candidatoModel", element.getCandidatoModel().getCodCandidato());
 		values.put("areaAtuacaoModel", element.getAreaAtuacaoModel().getCodArea());
 		values.put("vagaModel", element.getVagaModel().getCodVaga());

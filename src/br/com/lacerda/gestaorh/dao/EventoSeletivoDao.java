@@ -51,10 +51,10 @@ public class EventoSeletivoDao  extends Dao<EventoSeletivoModel>{
 		
 		ContentValues values = new ContentValues();
 		
-		values.put("codEventoSeletivo", element.getCodEventoSeletivo());
+		//values.put("codEventoSeletivo", element.getCodEventoSeletivo());
 		values.put("nomeEventoSeletivo", element.getNomeEventoSeletivo());
 		values.put("descriEventoSeletivo", element.getDescriEventoSeletivo());
-		values.put("notaEventoSeletivo", element.getNomeEventoSeletivo());
+		values.put("notaEventoSeletivo", element.getNotaEventoSeletivo());
 		
 		return values;
 	}

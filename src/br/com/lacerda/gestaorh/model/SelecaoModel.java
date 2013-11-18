@@ -1,7 +1,6 @@
 package br.com.lacerda.gestaorh.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import br.com.lacerda.gestaorh.dao.DaoFactory;
 
@@ -16,8 +15,8 @@ public class SelecaoModel implements Serializable {
 	private EmpresaModel empresaModel;
 	private EventoSeletivoModel eventoSeletivoModel;
 
-	public Boolean salvar(List<SelecaoModel> element) {
-		return DaoFactory.get(SelecaoModel.class).addListObj(element);
+	public Boolean salvar(SelecaoModel element) {
+		return DaoFactory.get(SelecaoModel.class).addObject(element);
 	}
 
 	public int getCodSelecao() {

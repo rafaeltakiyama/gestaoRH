@@ -61,6 +61,25 @@ public abstract class Dao<T> {
 		}
 		return true;
 	}
+	
+	public Boolean addObject(T element) {
+		try {
+			
+			Log.i(element.getClass().getSimpleName(), "Inserindo...");
+			BancoHelper.instance().db.beginTransaction();
+			try {
+					insert(element);
+					BancoHelper.instance().db.setTransactionSuccessful();
+			} finally {
+				BancoHelper.instance().db.endTransaction();
+			}
+		} catch (Exception e) {
+			Log.e("Dao", "Erro Add object: " + e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 	public Boolean verificaElementRepetido(T elementoWs,
 			List<T> listElementoLocal) {

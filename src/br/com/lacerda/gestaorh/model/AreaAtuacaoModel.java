@@ -1,7 +1,6 @@
 package br.com.lacerda.gestaorh.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import br.com.lacerda.gestaorh.dao.DaoFactory;
 
@@ -13,8 +12,8 @@ public class AreaAtuacaoModel implements Serializable{
 	private int codArea;
 	private String nomeArea;
 	
-    public Boolean salvar(List<AreaAtuacaoModel> element) {
-        return DaoFactory.get(AreaAtuacaoModel.class).addListObj(element);
+    public Boolean salvar(AreaAtuacaoModel element) {
+        return DaoFactory.get(AreaAtuacaoModel.class).addObject(element);
     }
 
 	public int getCodArea() {

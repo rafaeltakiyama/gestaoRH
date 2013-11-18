@@ -74,7 +74,7 @@ public class CandidatoDao extends Dao<CandidatoModel>{
 		
 		ContentValues values = new ContentValues();
 		
-		values.put("codCandidato", element.getCodCandidato());
+		//values.put("codCandidato", element.getCodCandidato());
 		values.put("areaAtuacao", element.getAreaAtuacaoModel().getCodArea());
 		values.put("nome", element.getNome());
 		values.put("cpf", element.getCpf());

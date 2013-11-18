@@ -1,7 +1,6 @@
 package br.com.lacerda.gestaorh.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import br.com.lacerda.gestaorh.dao.DaoFactory;
 
@@ -21,8 +20,8 @@ public class CandidatoModel implements Serializable {
 	private String instituicao_ensino;
 	private String data_conclusao;
 	
-    public Boolean salvar(List<CandidatoModel> element) {
-        return DaoFactory.get(CandidatoModel.class).addListObj(element);
+    public Boolean salvar(CandidatoModel element) {
+        return DaoFactory.get(CandidatoModel.class).addObject(element);
     }
 
 	public int getCodCandidato() {

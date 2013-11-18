@@ -67,7 +67,7 @@ public class VagaDao extends Dao<VagaModel>{
 
 		ContentValues values = new ContentValues();
 		
-		values.put("codVaga", element.getCodVaga());
+		//values.put("codVaga", element.getCodVaga());
 		values.put("empresaModel", element.getEmpresaModel().getCodEmpresa());
 		values.put("areaAtuacao", element.getAreaAtuacao().getCodArea());
 		values.put("nomeVaga", element.getNomeVaga());

@@ -51,7 +51,7 @@ public class EntrevistaDao extends Dao<EntrevistaModel>{
 		
 		ContentValues values = new ContentValues();
 		
-		values.put("codEntrevista", element.getCodEntrevista());
+		//values.put("codEntrevista", element.getCodEntrevista());
 		values.put("eventoSeletivoModel", element.getEventoSeletivoModel().getCodEventoSeletivo());
 		values.put("pretensaoSalarial", element.getPretensaoSalarial());
 		

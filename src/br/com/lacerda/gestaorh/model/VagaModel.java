@@ -1,7 +1,6 @@
 package br.com.lacerda.gestaorh.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import br.com.lacerda.gestaorh.dao.DaoFactory;
 
@@ -18,8 +17,8 @@ public class VagaModel implements Serializable {
 	private String descriVaga;
 	private String dataIniVaga;
 	
-    public Boolean salvar(List<VagaModel> element) {
-        return DaoFactory.get(VagaModel.class).addListObj(element);
+    public Boolean salvar(VagaModel element) {
+        return DaoFactory.get(VagaModel.class).addObject(element);
     }
 
 	public int getCodVaga() {

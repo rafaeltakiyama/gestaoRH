@@ -45,7 +45,7 @@ public class AreaAtuacaoDao extends Dao<AreaAtuacaoModel>{
 		
 		ContentValues values = new ContentValues();
 		
-		values.put("codArea", element.getCodArea());
+		//values.put("codArea", element.getCodArea());
 		values.put("nomeArea", element.getNomeArea());
 		
 		return values;

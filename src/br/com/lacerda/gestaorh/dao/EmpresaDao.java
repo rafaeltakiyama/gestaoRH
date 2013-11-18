@@ -56,7 +56,7 @@ public class EmpresaDao extends Dao<EmpresaModel>{
 		
 		ContentValues values = new ContentValues();
 		
-		values.put("codEmpresa", element.getCodEmpresa());
+		//values.put("codEmpresa", element.getCodEmpresa());
 		values.put("areaAtuacao", element.getAreaAtuacao().getCodArea());
 		values.put("nomeEmpresa", element.getNomeEmpresa());
 		values.put("enderecoEmpresa", element.getEnderecoEmpresa());
