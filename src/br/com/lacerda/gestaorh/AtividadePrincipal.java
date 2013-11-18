@@ -19,38 +19,6 @@ public class AtividadePrincipal extends Activity {
 		
 		DaoFactory.init(context);
 		
-//		AreaAtuacaoModel a = new AreaAtuacaoModel();
-//		a.setCodArea(1);
-//		
-//		EmpresaModel e = new EmpresaModel();
-//		e.setCodEmpresa(1);
-//		
-//		CandidatoModel cand = new CandidatoModel();
-//		cand.setCodCandidato(1);
-//		
-//		EventoSeletivoModel ev = new EventoSeletivoModel();
-//		ev.setCodEventoSeletivo(1);
-//		
-//		VagaModel v = new VagaModel();
-//		v.setCodVaga(1);
-//		
-//		
-//		SelecaoModel s = new SelecaoModel();
-//		s.setAreaAtuacaoModel(a);
-//		s.setCandidatoModel(cand);
-//		s.setEmpresaModel(e);
-//		s.setEventoSeletivoModel(ev);
-//		s.setVagaModel(v);
-//		
-//		SelecaoController.salvaSelecao(context, s);
-//		
-//		List<SelecaoModel> ls = new ArrayList<SelecaoModel>();
-//		
-//		ls = SelecaoController.getSelecoes(context);
-//		
-//		ls.size();
-		
-		
 	}
 
 	@Override

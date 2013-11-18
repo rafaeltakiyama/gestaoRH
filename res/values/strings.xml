@@ -4,5 +4,16 @@
     <string name="app_name">GestaoRH</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="nome">Nome: </string>
+    <string name="endereco">Endereço:</string>
+    <string name="rg">R.G.:</string>
+    <string name="cpf">CPF:</string>
+    <string name="dataNasc">Data de Nascimento:</string>
+    <string name="escolaridade">Escolaridade:</string>
+    <string name="instEnsino">Instituição de ensino:</string>
+    <string name="dataConclu">Data de Conclusão:</string>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="area">Área de Atuação</string>
 
 </resources>

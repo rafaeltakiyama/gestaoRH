@@ -1,0 +1,219 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AtividadePrincipal" >
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+cadastroCandidato/nometxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/nome"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/nomeEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/nometxt"
+                android:layout_below="@+cadastroCandidato/nometxt"
+                android:ems="10"
+                android:inputType="textPersonName" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+cadastroCandidato/endereco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/nometxt"
+                android:layout_below="@+cadastroCandidato/nomeEditTxt"
+                android:layout_marginTop="20dp"
+                android:text="@string/endereco"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/enderecoEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/endereco"
+                android:layout_below="@+cadastroCandidato/endereco"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+cadastroCandidato/rgtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/enderecoEditTxt"
+                android:layout_below="@+cadastroCandidato/enderecoEditTxt"
+                android:layout_marginTop="20dp"
+                android:text="@string/rg"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/rgEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/rgtxt"
+                android:layout_below="@+cadastroCandidato/rgtxt"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+cadastroCandidato/cpftxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/rgEditText"
+                android:layout_below="@+cadastroCandidato/rgEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/cpf"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/cpfEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/cpftxt"
+                android:layout_below="@+cadastroCandidato/cpftxt"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+cadastroCandidato/dataNascTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/cpfEditText"
+                android:layout_below="@+cadastroCandidato/cpfEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/dataNasc"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/dataNascEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/dataNascTxt"
+                android:layout_below="@+cadastroCandidato/dataNascTxt"
+                android:ems="10"
+                android:inputType="date" />
+
+            <TextView
+                android:id="@+cadastroCandidato/escolaridadeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/dataNascEditText"
+                android:layout_below="@+cadastroCandidato/dataNascEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/escolaridade"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/escolaridadeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/escolaridadeTxt"
+                android:layout_below="@+cadastroCandidato/escolaridadeTxt"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+cadastroCandidato/instEnsinoTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/escolaridadeEditText"
+                android:layout_below="@+cadastroCandidato/escolaridadeEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/instEnsino"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/instEnsinoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/instEnsinoTxt"
+                android:layout_below="@+cadastroCandidato/instEnsinoTxt"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+cadastroCandidato/dataConcluTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/instEnsinoEditText"
+                android:layout_below="@+cadastroCandidato/instEnsinoEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/dataConclu"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/dataConcluEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/dataConcluTxt"
+                android:layout_below="@+cadastroCandidato/dataConcluTxt"
+                android:ems="10"
+                android:inputType="date" />
+
+            <TextView
+                android:id="@+cadastroCandidato/areaTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/dataConcluEditText"
+                android:layout_below="@+cadastroCandidato/dataConcluEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/area"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+cadastroCandidato/areaSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/areaTxt"
+                android:layout_below="@+cadastroCandidato/areaTxt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+cadastroCandidato/areaSpinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                 >
+
+                <Button
+                    android:id="@+cadastroCandidato/salvarBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/salvar" 
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:id="@+cadastroCandidato/cancelarBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancelar" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
