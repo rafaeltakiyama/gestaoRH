@@ -114,11 +114,30 @@
                 android:inputType="date" />
 
             <TextView
-                android:id="@+cadastroCandidato/escolaridadeTxt"
+                android:id="@+cadastroCandidato/emailTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+cadastroCandidato/dataNascEditText"
                 android:layout_below="@+cadastroCandidato/dataNascEditText"
+                android:layout_marginTop="20dp"
+                android:text="@string/email"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroCandidato/emailEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/emailTxt"
+                android:layout_below="@+cadastroCandidato/emailTxt"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+cadastroCandidato/escolaridadeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroCandidato/emailEditTxt"
+                android:layout_below="@+cadastroCandidato/emailEditTxt"
                 android:layout_marginTop="20dp"
                 android:text="@string/escolaridade"
                 android:textSize="20sp" />
@@ -194,16 +213,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                 >
+                android:weightSum="2" >
 
                 <Button
                     android:id="@+cadastroCandidato/salvarBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/salvar" 
                     android:layout_weight="1"
-                    />
+                    android:text="@string/salvar" />
 
                 <Button
                     android:id="@+cadastroCandidato/cancelarBtn"
@@ -211,7 +228,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/cancelar" />
-
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
