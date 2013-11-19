@@ -9,7 +9,6 @@ public class EmpresaModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int codEmpresa;
-	private AreaAtuacaoModel areaAtuacao;
 	private String nomeEmpresa;
 	private String enderecoEmpresa;
 	private String emailEmpresa;
@@ -24,14 +23,6 @@ public class EmpresaModel implements Serializable {
 
 	public void setCodEmpresa(int codEmpresa) {
 		this.codEmpresa = codEmpresa;
-	}
-
-	public AreaAtuacaoModel getAreaAtuacao() {
-		return areaAtuacao;
-	}
-
-	public void setAreaAtuacao(AreaAtuacaoModel areaAtuacao) {
-		this.areaAtuacao = areaAtuacao;
 	}
 
 	public String getNomeEmpresa() {

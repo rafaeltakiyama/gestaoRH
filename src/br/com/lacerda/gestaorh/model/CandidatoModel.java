@@ -9,7 +9,6 @@ public class CandidatoModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int codCandidato;
-	private AreaAtuacaoModel areaAtuacaoModel;
 	private String nome;
 	private String cpf;
 	private String rg;
@@ -30,14 +29,6 @@ public class CandidatoModel implements Serializable {
 
 	public void setCodCandidato(int codCandidato) {
 		this.codCandidato = codCandidato;
-	}
-
-	public AreaAtuacaoModel getAreaAtuacaoModel() {
-		return areaAtuacaoModel;
-	}
-
-	public void setAreaAtuacaoModel(AreaAtuacaoModel areaAtuacaoModel) {
-		this.areaAtuacaoModel = areaAtuacaoModel;
 	}
 
 	public String getNome() {

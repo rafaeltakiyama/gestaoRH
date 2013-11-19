@@ -35,10 +35,6 @@ public class CandidatoDao extends Dao<CandidatoModel>{
 		int idxCodCandidato = cursor.getColumnIndex("codCandidato");
 		c.setCodCandidato(cursor.getInt(idxCodCandidato));
 		
-		AreaAtuacaoDao areaDao = (AreaAtuacaoDao) DaoFactory.get(AreaAtuacaoModel.class);
-		int idxAreaAtuacao = cursor.getColumnIndex("areaAtuacao");
-		c.setAreaAtuacaoModel(areaDao.select(cursor.getInt(idxAreaAtuacao)));
-		
 		int idxNome = cursor.getColumnIndex("nome");
 		c.setNome(cursor.getString(idxNome));
 		
@@ -75,7 +71,6 @@ public class CandidatoDao extends Dao<CandidatoModel>{
 		ContentValues values = new ContentValues();
 		
 		//values.put("codCandidato", element.getCodCandidato());
-		values.put("areaAtuacao", element.getAreaAtuacaoModel().getCodArea());
 		values.put("nome", element.getNome());
 		values.put("cpf", element.getCpf());
 		values.put("rg", element.getRg());

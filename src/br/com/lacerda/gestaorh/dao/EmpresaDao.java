@@ -35,10 +35,6 @@ public class EmpresaDao extends Dao<EmpresaModel>{
 		int idxCodEmpresa = cursor.getColumnIndex("codEmpresa");
 		empresa.setCodEmpresa(cursor.getInt(idxCodEmpresa));
 		
-		AreaAtuacaoDao areaDao = (AreaAtuacaoDao) DaoFactory.get(AreaAtuacaoModel.class);
-		int idxAreaAtuacao = cursor.getColumnIndex("areaAtuacao");
-		empresa.setAreaAtuacao(areaDao.select(cursor.getInt(idxAreaAtuacao)));
-		
 		int idxNomeEmpresa = cursor.getColumnIndex("nomeEmpresa");
 		empresa.setNomeEmpresa(cursor.getString(idxNomeEmpresa));
 		
@@ -57,7 +53,6 @@ public class EmpresaDao extends Dao<EmpresaModel>{
 		ContentValues values = new ContentValues();
 		
 		//values.put("codEmpresa", element.getCodEmpresa());
-		values.put("areaAtuacao", element.getAreaAtuacao().getCodArea());
 		values.put("nomeEmpresa", element.getNomeEmpresa());
 		values.put("enderecoEmpresa", element.getEnderecoEmpresa());
 		values.put("emailEmpresa", element.getEmailEmpresa());

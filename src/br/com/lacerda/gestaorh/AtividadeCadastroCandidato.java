@@ -1,12 +1,18 @@
 package br.com.lacerda.gestaorh;
 
+import br.com.lacerda.gestaorh.model.CandidatoModel;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AtividadeCadastroCandidato extends Activity {
+public class AtividadeCadastroCandidato extends Activity{
 
 	private Context context;
 	private EditText nomeCandidato;
@@ -16,7 +22,20 @@ public class AtividadeCadastroCandidato extends Activity {
 	private EditText dataNascCandidato;
 	private EditText emailCandidato;
 	private EditText escolaridadeCandidato;
+	private EditText instituicaoEnsinoCandidato;
 	private EditText dataConcluCandidato;
+	private Button btnSalvar;
+	private Button btnCancelar;
+	private String nome;
+	private String endereco;
+	private String rg;
+	private String cpf;
+	private String dataNasc;
+	private String email;
+	private String escolaridade;
+	private String instituicaoEnsino;
+	private String dataConclusao;
+	private CandidatoModel candidatoModel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,30 +52,95 @@ public class AtividadeCadastroCandidato extends Activity {
 		dataNascCandidato = (EditText) findViewById(R.cadastroCandidato.dataNascEditText);
 		emailCandidato = (EditText) findViewById(R.cadastroCandidato.emailEditTxt);
 		escolaridadeCandidato = (EditText) findViewById(R.cadastroCandidato.escolaridadeEditText);
+		instituicaoEnsinoCandidato = (EditText) findViewById(R.cadastroCandidato.instEnsinoEditText);
 		dataConcluCandidato = (EditText) findViewById(R.cadastroCandidato.dataConcluEditText);
-
-		getDadosCandidato();
+		
+		btnSalvar = (Button) findViewById(R.cadastroCandidato.salvarBtn);
+		btnCancelar = (Button) findViewById(R.cadastroCandidato.cancelarBtn);
+		
+		btnSalvar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(getDadosCandidato()){
+					dialogConfirma(candidatoModel);					
+				}
+			}
+		});
+		
+		btnCancelar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 		
 	}
 
-	private void getDadosCandidato() {
+	private Boolean getDadosCandidato() {
 		
-		boolean camposOk = validate(new EditText[] { nomeCandidato, enderecoCandidato,
-				rgCandidato, cpfCandidato, dataNascCandidato, emailCandidato, escolaridadeCandidato, dataConcluCandidato });
+		candidatoModel = new CandidatoModel();
+		
+		boolean camposOk = validate(new EditText[] { nomeCandidato, 
+				enderecoCandidato,
+				rgCandidato,
+				cpfCandidato,
+				dataNascCandidato,
+				emailCandidato,
+				escolaridadeCandidato,
+				instituicaoEnsinoCandidato,
+				dataConcluCandidato });
 		
 		if (camposOk) {
-			nomeCandidato.getText().toString();
-			enderecoCandidato.getText().toString();
-			rgCandidato.getText().toString();
-			cpfCandidato.getText().toString();
-			dataNascCandidato.getText().toString();
-			emailCandidato.getText().toString();
-			escolaridadeCandidato.getText().toString();
-			dataConcluCandidato.getText().toString();
+			nome = nomeCandidato.getText().toString();
+			endereco = enderecoCandidato.getText().toString();
+			rg = rgCandidato.getText().toString();
+			cpf = cpfCandidato.getText().toString();
+			dataNasc = dataNascCandidato.getText().toString();
+			email = emailCandidato.getText().toString();
+			escolaridade = escolaridadeCandidato.getText().toString();
+			instituicaoEnsino = instituicaoEnsinoCandidato.getText().toString();
+			dataConclusao = dataConcluCandidato.getText().toString();
+			
+			candidatoModel.setNome(nome);
+			candidatoModel.setEndereco(endereco);
+			candidatoModel.setRg(rg);
+			candidatoModel.setCpf(cpf);
+			candidatoModel.setData_nasc(dataNasc);
+			candidatoModel.setEmail(email);
+			candidatoModel.setEscolaridade(escolaridade);
+			candidatoModel.setInstituicao_ensino(instituicaoEnsino);
+			candidatoModel.setData_conclusao(dataConclusao);
+			
+			return true;
 			
 		}else{
 			campoObrigatorio();
+			return false;
 		}
+		
+	}
+	
+	protected void dialogConfirma(CandidatoModel candidato) {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setTitle("Inserir o candidato?");
+        alert.setMessage(candidato.getNome() + " " + candidato.getEmail());
+        alert.setPositiveButton("Sim", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {   
+            	
+            }
+        }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		}).show();
 		
 	}
 	
