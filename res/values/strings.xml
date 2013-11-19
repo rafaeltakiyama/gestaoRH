@@ -9,6 +9,7 @@
     <string name="rg">R.G.:</string>
     <string name="cpf">CPF:</string>
     <string name="dataNasc">Data de Nascimento:</string>
+    <string name="data">Data:</string>
     <string name="escolaridade">Escolaridade:</string>
     <string name="instEnsino">Instituição de ensino:</string>
     <string name="dataConclu">Data de Conclusão:</string>
@@ -16,5 +17,6 @@
     <string name="cancelar">Cancelar</string>
     <string name="area">Área de Atuação:</string>
     <string name="email">E-Mail:</string>
+    <string name="inst">inst</string>
 
 </resources>

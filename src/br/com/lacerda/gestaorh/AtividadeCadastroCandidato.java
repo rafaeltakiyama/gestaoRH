@@ -1,8 +1,11 @@
 package br.com.lacerda.gestaorh;
 
+import br.com.lacerda.gestaorh.adapter.CandidatoAdapter;
+import br.com.lacerda.gestaorh.controller.CandidatoController;
 import br.com.lacerda.gestaorh.model.CandidatoModel;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class AtividadeCadastroCandidato extends Activity{
@@ -126,21 +130,28 @@ public class AtividadeCadastroCandidato extends Activity{
 
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
         alert.setTitle("Inserir o candidato?");
-        alert.setMessage(candidato.getNome() + " " + candidato.getEmail());
         alert.setPositiveButton("Sim", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which)
             {   
-            	
+            	CandidatoController.salvaCandidato(context, candidatoModel);
+            	finish();
             }
         }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
 				
 			}
-		}).show();
+		});
+        
+        ListView list = new ListView(context);
+        CandidatoAdapter adapter = new CandidatoAdapter(context, candidatoModel);
+        list.setAdapter(adapter);
+        
+        alert.setView(list);
+        Dialog dialog = alert.create();
+        dialog.show();
 		
 	}
 	
