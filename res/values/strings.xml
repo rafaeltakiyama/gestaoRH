@@ -18,5 +18,23 @@
     <string name="area">Área de Atuação:</string>
     <string name="email">E-Mail:</string>
     <string name="inst">inst</string>
-
+    
+    <string-array name="escolaridade">
+        
+        <item>Selecione...</item>
+        <item>Analfabeto</item>
+        <item>Alfabetizado</item>
+        <item>1º a 4º inconpleto</item>
+        <item>1º a 4º completo</item>
+        <item>5º a 8º incompleto</item>
+        <item>5º a 8º completo</item>
+        <item>2º grau incompleto</item>
+        <item>2º grau completo</item>
+        <item>Superior incompleto</item>
+        <item>Superior completo</item>
+        <item>Especialização</item>
+        <item>Mestrado/Doutorado</item>
+        
+    </string-array>
+    
 </resources>

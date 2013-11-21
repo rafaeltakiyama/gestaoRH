@@ -10,25 +10,38 @@ import br.com.lacerda.gestaorh.model.CandidatoModel;
 
 public class CandidatoController {
 
-	public static List<CandidatoModel> getCandidatos(Context context){
+	public static List<CandidatoModel> getCandidatos(Context context) {
 
 		List<CandidatoModel> candidatoList = new ArrayList<CandidatoModel>();
-		
+
 		BancoHelper.instance().open(context);
 		candidatoList = DaoFactory.get(CandidatoModel.class).selectAll();
 		BancoHelper.instance().close();
-		
+
 		return candidatoList;
 	}
-	
-	public static void salvaCandidato(Context context, CandidatoModel candidato){
-		
+
+	public static void salvaCandidato(Context context, CandidatoModel candidato) {
+
 		CandidatoModel candidatoModel = new CandidatoModel();
-		
+
 		BancoHelper.instance().open(context);
 		candidatoModel.salvar(candidato);
 		BancoHelper.instance().close();
-		
 	}
-	
+
+	public static int getCodCandidato(Context context) {
+
+		String sql = "SELECT * FROM [tbcandidato] WHERE [codCandidato] = (SELECT MAX([codCandidato]) FROM [tbcandidato])";
+		
+		List<CandidatoModel> candidatoList = new ArrayList<CandidatoModel>();
+
+		BancoHelper.instance().open(context);
+		candidatoList = DaoFactory.get(CandidatoModel.class).selectAllImpl(sql, null);
+		BancoHelper.instance().close();
+
+		return candidatoList.get(0).getCodCandidato();
+
+	}
+
 }

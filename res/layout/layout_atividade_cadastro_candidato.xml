@@ -142,21 +142,28 @@
                 android:text="@string/escolaridade"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+cadastroCandidato/escolaridadeEditText"
+            <Spinner
+                 android:id="@+cadastroCandidato/escolaridadeSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+cadastroCandidato/escolaridadeTxt"
-                android:layout_below="@+cadastroCandidato/escolaridadeTxt"
-                android:ems="10"
-                android:inputType="text" />
+                android:layout_below="@+cadastroCandidato/escolaridadeTxt" />
+
+            <!-- <EditText -->
+            <!-- android:id="@+cadastroCandidato/escolaridadeEditText" -->
+            <!-- android:layout_width="match_parent" -->
+            <!-- android:layout_height="wrap_content" -->
+            <!-- android:layout_alignLeft="@+cadastroCandidato/escolaridadeTxt" -->
+            <!-- android:layout_below="@+cadastroCandidato/escolaridadeTxt" -->
+            <!-- android:ems="10" -->
+            <!-- android:inputType="text" /> -->
 
             <TextView
                 android:id="@+cadastroCandidato/instEnsinoTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+cadastroCandidato/escolaridadeEditText"
-                android:layout_below="@+cadastroCandidato/escolaridadeEditText"
+                android:layout_alignLeft="@+cadastroCandidato/escolaridadeSpinner"
+                android:layout_below="@+cadastroCandidato/escolaridadeSpinner"
                 android:layout_marginTop="20dp"
                 android:text="@string/instEnsino"
                 android:textSize="20sp" />
@@ -189,27 +196,28 @@
                 android:ems="10"
                 android:inputType="date" />
 
-            <TextView
-                android:id="@+cadastroCandidato/areaTxt"
+            <Button
+                android:id="@+cadastroCandidato/areaBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+cadastroCandidato/dataConcluEditText"
                 android:layout_below="@+cadastroCandidato/dataConcluEditText"
                 android:layout_marginTop="20dp"
                 android:text="@string/area"
-                android:textSize="20sp" />
+                android:textSize="20sp" 
+                />
 
-            <Spinner
-                android:id="@+cadastroCandidato/areaSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+cadastroCandidato/areaTxt"
-                android:layout_below="@+cadastroCandidato/areaTxt" />
+<!--             <Spinner -->
+<!--                 android:id="@+cadastroCandidato/areaSpinner" -->
+<!--                 android:layout_width="match_parent" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_alignLeft="@+cadastroCandidato/areaTxt" -->
+<!--                 android:layout_below="@+cadastroCandidato/areaTxt" /> -->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+cadastroCandidato/areaSpinner"
+                android:layout_below="@+cadastroCandidato/areaBtn"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
