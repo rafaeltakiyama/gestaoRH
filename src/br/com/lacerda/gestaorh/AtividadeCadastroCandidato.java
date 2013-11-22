@@ -1,6 +1,7 @@
 package br.com.lacerda.gestaorh;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -8,6 +9,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +22,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import br.com.lacerda.gestaorh.adapter.CandidatoAdapter;
+import br.com.lacerda.gestaorh.adapter.CheckBoxListAdapter;
+import br.com.lacerda.gestaorh.controller.AreaAtuacaoController;
 import br.com.lacerda.gestaorh.controller.CandidatoController;
+import br.com.lacerda.gestaorh.model.AreaAtuacaoModel;
 import br.com.lacerda.gestaorh.model.CandidatoModel;
 
 public class AtividadeCadastroCandidato extends Activity {
@@ -48,14 +53,7 @@ public class AtividadeCadastroCandidato extends Activity {
 	private String dataConclusao;
 	private CandidatoModel candidatoModel;
 	private Spinner spinnerEscolaridade;
-	// private Spinner spinnerAreaAtuacao;
-	// private List<AreaAtuacaoModel> areaList;
-	// private ArrayList<String> nomeAreaAtuacaoArray;
-	// private HashMap<String, Integer> areaHash;
 	private static final String SELECIONE = "Selecione...";
-
-	// private int codArea;
-	// private String areaNome;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +63,6 @@ public class AtividadeCadastroCandidato extends Activity {
 
 		context = this;
 
-		// spinnerAreaAtuacao = (Spinner)
-		// findViewById(R.cadastroCandidato.areaSpinner);
 		spinnerEscolaridade = (Spinner) findViewById(R.cadastroCandidato.escolaridadeSpinner);
 		nomeCandidato = (EditText) findViewById(R.cadastroCandidato.nomeEditTxt);
 		enderecoCandidato = (EditText) findViewById(R.cadastroCandidato.enderecoEditTxt);
@@ -85,7 +81,7 @@ public class AtividadeCadastroCandidato extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				AlertDialogCheckBox();
+				showCustomDialog();
 			}
 		});
 		
@@ -109,61 +105,9 @@ public class AtividadeCadastroCandidato extends Activity {
 		});
 
 		setSpinnerEscolaridade();
-		// setSpinnerAreaAtuacao();
 
 	}
 
-	// ---------------------------------- lógica do spinnerAreaAtuação
-	// ----------------------------------
-	// private void setSpinnerAreaAtuacao() {
-	//
-	// getListaAreaAtuacao();
-	//
-	// ArrayAdapter<String> areaAdapter = new ArrayAdapter<String>(context,
-	// android.R.layout.simple_spinner_item, nomeAreaAtuacaoArray);
-	// areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	// spinnerAreaAtuacao.setAdapter(areaAdapter);
-	// spinnerAreaItemSelecionado();
-	// }
-	//
-	// private void spinnerAreaItemSelecionado() {
-	// spinnerAreaAtuacao.setOnItemSelectedListener(new OnItemSelectedListener()
-	// {
-	//
-	// @Override
-	// public void onItemSelected(AdapterView<?> parent,
-	// View view, int position, long id) {
-	//
-	// if (!(parent.getItemAtPosition(position).equals(SELECIONE))) {
-	// areaNome = parent.getItemAtPosition(position).toString();
-	// codArea = areaHash.get(areaNome);
-	// }
-	// }
-	//
-	// @Override
-	// public void onNothingSelected(AdapterView<?> arg0) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// });
-	// }
-	//
-	// private void getListaAreaAtuacao() {
-	// areaList = AreaAtuacaoController.getAreasAtuacao(context);
-	// areaHash = new HashMap<String, Integer>();
-	// nomeAreaAtuacaoArray = new ArrayList<String>();
-	// nomeAreaAtuacaoArray.add(SELECIONE);
-	//
-	// for (AreaAtuacaoModel a : areaList) {
-	// nomeAreaAtuacaoArray.add(a.getNomeArea());
-	// areaHash.put(a.getNomeArea(), a.getCodArea());
-	// }
-	// }
-	// ---------------------------------- Fim ----------------------------------
-
-	// ---------------------------------- lógica do spinnerEscolaridade
-	// ----------------------------------
 	private void setSpinnerEscolaridade() {
 
 		Resources res = context.getResources();
@@ -194,7 +138,6 @@ public class AtividadeCadastroCandidato extends Activity {
 				});
 	}
 
-	// ---------------------------------- Fim ----------------------------------
 
 	private Boolean getDadosCandidato() {
 
@@ -283,56 +226,25 @@ public class AtividadeCadastroCandidato extends Activity {
 				Toast.LENGTH_SHORT).show();
 	}
 
-	private void AlertDialogCheckBox() {
-		AlertDialog dialog;
-		final CharSequence[] items = { " Easy ", " Medium ", " Hard ",
-				" Very Hard " };
-		// arraylist to keep the selected items
-		final ArrayList<Integer> seletedItems = new ArrayList<Integer>();
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Select The Difficulty Level");
-		builder.setMultiChoiceItems(items, null,
-				new DialogInterface.OnMultiChoiceClickListener() {
-					// indexSelected contains the index of item (of which
-					// checkbox checked)
-					@Override
-					public void onClick(DialogInterface dialog,
-							int indexSelected, boolean isChecked) {
-						if (isChecked) {
-							// If the user checked the item, add it to the
-							// selected items
-							// write your code when user checked the checkbox
-							seletedItems.add(indexSelected);
-						} else if (seletedItems.contains(indexSelected)) {
-							// Else, if the item is already in the array, remove
-							// it
-							// write your code when user Uchecked the checkbox
-							seletedItems.remove(Integer.valueOf(indexSelected));
-						}
-					}
-				})
-				// Set the action buttons
-				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						// Your code when user clicked on OK
-						// You can write the code to save the selected item here
+	private void showCustomDialog() {
 
-					}
-				})
-				.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int id) {
-								// Your code when user clicked on Cancel
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("Title");
+		builder.setPositiveButton("OK", null);
 
-							}
-						});
+		List<AreaAtuacaoModel> areaAtuacaoListAdapter = new ArrayList<AreaAtuacaoModel>();
+		areaAtuacaoListAdapter = AreaAtuacaoController.getAreasAtuacao(context);
 
-		dialog = builder.create();// AlertDialog dialog; create like this
-									// outside onClick
+		ListView list = new ListView(context);
+		CheckBoxListAdapter adapter = new CheckBoxListAdapter(context,
+				areaAtuacaoListAdapter);
+		list.setAdapter(adapter);
+
+		list.setBackgroundColor(Color.WHITE);
+		builder.setView(list);
+		Dialog dialog = builder.create();
+
 		dialog.show();
 	}
-
 }
