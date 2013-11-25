@@ -230,7 +230,7 @@ public class AtividadeCadastroCandidato extends Activity {
 	private void showCustomDialog() {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle("Área de Atuação");
+		builder.setTitle("Title");
 		builder.setPositiveButton("OK", null);
 
 		List<AreaAtuacaoModel> areaAtuacaoListAdapter = new ArrayList<AreaAtuacaoModel>();
