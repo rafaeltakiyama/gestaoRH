@@ -5,10 +5,12 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import br.com.lacerda.gestaorh.R;
 import br.com.lacerda.gestaorh.model.AreaAtuacaoModel;
 
@@ -41,7 +43,7 @@ public class CheckBoxListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 
 		AreaAtuacaoModel areaModel = areaList.get(position);
 
@@ -51,14 +53,21 @@ public class CheckBoxListAdapter extends BaseAdapter {
 
 		LinearLayout ll = (LinearLayout) view
 				.findViewById(R.itemCheckBox.linear);
-		CheckBox[] cb = new CheckBox[areaList.size()];
-		int i = 0;
+		final CheckBox[] cb = new CheckBox[areaList.size()];
 
-		cb[i] = new CheckBox(context);
-		ll.addView(cb[i]);
-		cb[i].setText(areaModel.getNomeArea());
-		cb[i].setId(i);
-		i++;
+		cb[position] = new CheckBox(context);
+		ll.addView(cb[position]);
+		cb[position].setText(areaModel.getNomeArea());
+		cb[position].setId(position);
+		
+		cb[position].setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				final Boolean cbIsChecked = cb[position].isChecked();
+				Toast.makeText(context, String.valueOf(cbIsChecked) + " " + position,Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		return view;
 	}
