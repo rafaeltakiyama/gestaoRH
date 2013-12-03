@@ -18,12 +18,15 @@ public class CheckBoxListAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<AreaAtuacaoModel> areaList;
+	private Boolean[] checked;
 
 	public CheckBoxListAdapter(Context context,
 			List<AreaAtuacaoModel> partidaList) {
 
 		this.context = context;
 		this.areaList = partidaList;
+		
+		checked = new Boolean[areaList.size()];
 
 	}
 
@@ -65,6 +68,18 @@ public class CheckBoxListAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				final Boolean cbIsChecked = cb[position].isChecked();
+				
+				if(cbIsChecked){
+					
+					checked[position] = cbIsChecked;
+					
+				}else{
+					
+					checked[position] = cbIsChecked;
+					
+				}
+				
+				
 				Toast.makeText(context, String.valueOf(cbIsChecked) + " " + position,Toast.LENGTH_SHORT).show();
 			}
 		});

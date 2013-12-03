@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AtividadePrincipal" >
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+cadastroEmpresa/nomeEmpresatxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/nomeEmpresa"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroEmpresa/nomeEmpresaEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroEmpresa/nomeEmpresatxt"
+                android:layout_below="@+cadastroEmpresa/nomeEmpresatxt"
+                android:ems="10"
+                android:inputType="textPersonName" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+cadastroEmpresa/enderecoEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroEmpresa/nomeEmpresatxt"
+                android:layout_below="@+cadastroEmpresa/nomeEmpresaEditTxt"
+                android:layout_marginTop="20dp"
+                android:text="@string/endereco"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroEmpresa/enderecoEmpresaEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroEmpresa/enderecoEmpresa"
+                android:layout_below="@+cadastroEmpresa/enderecoEmpresa"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+
+            <TextView
+                android:id="@+cadastroEmpresa/emailEmpresaTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroEmpresa/enderecoEmpresaEditTxt"
+                android:layout_below="@+cadastroEmpresa/enderecoEmpresaEditTxt"
+                android:layout_marginTop="20dp"
+                android:text="@string/email"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+cadastroEmpresa/emailEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroEmpresa/emailEmpresaTxt"
+                android:layout_below="@+cadastroEmpresa/emailEmpresaTxt"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <Button
+                android:id="@+cadastroEmpresa/areaEmpresaBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+cadastroEmpresa/emailEditTxt"
+                android:layout_below="@+cadastroEmpresa/emailEditTxt"
+                android:layout_marginTop="20dp"
+                android:text="@string/area"
+                android:textSize="20sp" 
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+cadastroEmpresa/areaEmpresaBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <Button
+                    android:id="@+cadastroEmpresa/salvarBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/salvar" />
+
+                <Button
+                    android:id="@+cadastroEmpresa/cancelarBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancelar" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

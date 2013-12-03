@@ -3,6 +3,7 @@ package br.com.lacerda.gestaorh.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Context;
 import br.com.lacerda.gestaorh.model.AreaAtuacaoModel;
 import br.com.lacerda.gestaorh.model.CandidatoModel;
 import br.com.lacerda.gestaorh.model.EmpresaModel;
@@ -10,8 +11,6 @@ import br.com.lacerda.gestaorh.model.EntrevistaModel;
 import br.com.lacerda.gestaorh.model.EventoSeletivoModel;
 import br.com.lacerda.gestaorh.model.SelecaoModel;
 import br.com.lacerda.gestaorh.model.VagaModel;
-
-import android.content.Context;
 
 public class DaoFactory {
 

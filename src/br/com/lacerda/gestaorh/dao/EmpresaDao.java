@@ -3,7 +3,6 @@ package br.com.lacerda.gestaorh.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import br.com.lacerda.gestaorh.model.AreaAtuacaoModel;
 import br.com.lacerda.gestaorh.model.EmpresaModel;
 
 public class EmpresaDao extends Dao<EmpresaModel>{

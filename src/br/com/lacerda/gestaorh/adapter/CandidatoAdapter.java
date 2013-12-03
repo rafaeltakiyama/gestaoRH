@@ -1,13 +1,12 @@
 package br.com.lacerda.gestaorh.adapter;
-import br.com.lacerda.gestaorh.R;
-import br.com.lacerda.gestaorh.R.itemCand;
-import br.com.lacerda.gestaorh.model.CandidatoModel;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import br.com.lacerda.gestaorh.R;
+import br.com.lacerda.gestaorh.model.CandidatoModel;
 
 
 public class CandidatoAdapter extends BaseAdapter{
