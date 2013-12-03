@@ -25,12 +25,15 @@ import br.com.lacerda.gestaorh.adapter.CandidatoAdapter;
 import br.com.lacerda.gestaorh.adapter.CheckBoxListAdapter;
 import br.com.lacerda.gestaorh.controller.AreaAtuacaoController;
 import br.com.lacerda.gestaorh.controller.CandidatoController;
+import br.com.lacerda.gestaorh.controller.EmpresaController;
 import br.com.lacerda.gestaorh.model.AreaAtuacaoModel;
 import br.com.lacerda.gestaorh.model.CandidatoModel;
+import br.com.lacerda.gestaorh.model.EmpresaModel;
 
 public class AtividadeCadastroEmpresa extends Activity {
 
 	private Context context;
+	private EditText nomeEmpresa;
 	private EditText enderecoEmpresa;
 	private EditText emailEmpresa;
 	private Button btnSalvar;
@@ -40,6 +43,7 @@ public class AtividadeCadastroEmpresa extends Activity {
 	private String nome;
 	private String endereco;
 	private String email;
+	private EmpresaModel empresaModel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,13 @@ public class AtividadeCadastroEmpresa extends Activity {
 
 		context = this;
 
-		enderecoEmpresa = (EditText) findViewById(R.cadastroCandidato.enderecoEditTxt);
-		emailEmpresa = (EditText) findViewById(R.cadastroCandidato.emailEditTxt);
+		nomeEmpresa = (EditText) findViewById(R.cadastroEmpresa.nomeEmpresaEditTxt);
+		enderecoEmpresa = (EditText) findViewById(R.cadastroEmpresa.enderecoEmpresaEditTxt);
+		emailEmpresa = (EditText) findViewById(R.cadastroEmpresa.emailEditTxt);
 
-		btnAreaEmpresa = (Button) findViewById(R.cadastroCandidato.areaBtn);
-		btnSalvar = (Button) findViewById(R.cadastroCandidato.salvarBtn);
-		btnCancelar = (Button) findViewById(R.cadastroCandidato.cancelarBtn);
+		btnAreaEmpresa = (Button) findViewById(R.cadastroEmpresa.areaEmpresaBtn);
+		btnSalvar = (Button) findViewById(R.cadastroEmpresa.salvarBtn);
+		btnCancelar = (Button) findViewById(R.cadastroEmpresa.cancelarBtn);
 
 		btnAreaEmpresa.setOnClickListener(new OnClickListener() {
 			
@@ -69,9 +74,9 @@ public class AtividadeCadastroEmpresa extends Activity {
 
 			@Override
 			public void onClick(View v) {
-//				if (getDadosCandidato()) {
-//					dialogConfirma(candidatoModel);
-//				}
+				if (getDadosEmpresa()) {
+					dialogEmpresa(empresaModel);
+				}
 			}
 		});
 
@@ -84,18 +89,52 @@ public class AtividadeCadastroEmpresa extends Activity {
 		});
 
 	}
+	
+	
+	
 
 
-	protected void dialogConfirma(CandidatoModel candidato) {
+	private Boolean getDadosEmpresa() {
+
+		empresaModel = new EmpresaModel();
+		
+		boolean camposOk = validate(new EditText[] {nomeEmpresa, enderecoEmpresa, emailEmpresa});
+		
+		if (camposOk) {
+			
+			nome = nomeEmpresa.getText().toString();
+			endereco = enderecoEmpresa.getText().toString();
+			email = emailEmpresa.getText().toString();
+			
+			empresaModel.setNomeEmpresa(nome);
+			empresaModel.setEnderecoEmpresa(endereco);
+			empresaModel.setEmailEmpresa(email);
+			
+			return true;
+			
+		}else{
+			
+			campoObrigatorio();
+			return false;
+			
+		}
+		
+	}
+
+	protected void dialogEmpresa(EmpresaModel empresa) {
 
 		AlertDialog.Builder alert = new AlertDialog.Builder(context);
-		alert.setTitle("Inserir o candidato?");
+		alert.setTitle("Inserir empresa?");
 		alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				CandidatoController.salvaCandidato(context, candidatoModel);
+			//	CandidatoController.salvaCandidato(context, candidatoModel);
 
-				int codCandidato = CandidatoController.getCodCandidato(context);
+				EmpresaController.salvaEmpresa(context, empresaModel);
+				
+				
+				//buscar o id da empresa que foi inserida
+				//int codCandidato = CandidatoController.getCodCandidato(context);
 
 				finish();
 			}
@@ -108,8 +147,10 @@ public class AtividadeCadastroEmpresa extends Activity {
 		});
 
 		ListView list = new ListView(context);
-		CandidatoAdapter adapter = new CandidatoAdapter(context, candidatoModel);
-		list.setAdapter(adapter);
+		
+		//criar uma empresaAdapter
+	//	CandidatoAdapter adapter = new CandidatoAdapter(context, candidatoModel);
+		//list.setAdapter(adapter);
 
 		alert.setView(list);
 		Dialog dialog = alert.create();
