@@ -19,7 +19,9 @@ public class AtividadePrincipal extends Activity {
 	private String[] menu = {
 			
 			"Cadastro Candidato",
-			"Cadastro Empresa"
+			"Candidatos Cadastrados",
+			"Cadastro Empresa",
+			"Empresas Cadastradas"
 			
 	};
 	
@@ -48,7 +50,15 @@ public class AtividadePrincipal extends Activity {
 					break;
 					
 				case 1:
+					startActivity(new Intent(context, AtividadeListaCandidato.class));
+					break;
+					
+				case 2:
 					startActivity(new Intent(context, AtividadeCadastroEmpresa.class));
+					break;
+					
+				case 3:
+					startActivity(new Intent(context, AtividadeListaEmpresa.class));
 					break;
 
 				default:
