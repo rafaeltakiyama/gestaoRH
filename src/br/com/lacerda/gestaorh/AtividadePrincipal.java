@@ -18,7 +18,8 @@ public class AtividadePrincipal extends Activity {
 	
 	private String[] menu = {
 			
-			"Cadastro Candidato"
+			"Cadastro Candidato",
+			"Cadastro Empresa"
 			
 	};
 	
@@ -44,6 +45,10 @@ public class AtividadePrincipal extends Activity {
 				switch (position) {
 				case 0:
 					startActivity(new Intent(context, AtividadeCadastroCandidato.class));
+					break;
+					
+				case 1:
+					startActivity(new Intent(context, AtividadeCadastroEmpresa.class));
 					break;
 
 				default:

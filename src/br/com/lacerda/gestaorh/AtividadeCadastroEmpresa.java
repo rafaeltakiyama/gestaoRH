@@ -23,23 +23,25 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import br.com.lacerda.gestaorh.adapter.CandidatoAdapter;
 import br.com.lacerda.gestaorh.adapter.CheckBoxListAdapter;
+import br.com.lacerda.gestaorh.adapter.EmpresaAdapter;
 import br.com.lacerda.gestaorh.controller.AreaAtuacaoController;
 import br.com.lacerda.gestaorh.controller.CandidatoController;
+import br.com.lacerda.gestaorh.controller.EmpresaController;
 import br.com.lacerda.gestaorh.model.AreaAtuacaoModel;
 import br.com.lacerda.gestaorh.model.CandidatoModel;
+import br.com.lacerda.gestaorh.model.EmpresaModel;
 
 public class AtividadeCadastroEmpresa extends Activity {
 
 	private Context context;
+	private EditText nomeEmpresa;
 	private EditText enderecoEmpresa;
 	private EditText emailEmpresa;
 	private Button btnSalvar;
 	private Button btnCancelar;
 	private Button btnAreaEmpresa;
 	
-	private String nome;
-	private String endereco;
-	private String email;
+	private EmpresaModel empresaModel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +51,19 @@ public class AtividadeCadastroEmpresa extends Activity {
 
 		context = this;
 
-		enderecoEmpresa = (EditText) findViewById(R.cadastroCandidato.enderecoEditTxt);
-		emailEmpresa = (EditText) findViewById(R.cadastroCandidato.emailEditTxt);
+		nomeEmpresa = (EditText) findViewById(R.cadastroEmpresa.nomeEmpresaEditTxt);
+		enderecoEmpresa = (EditText) findViewById(R.cadastroEmpresa.enderecoEmpresaEditTxt);
+		emailEmpresa = (EditText) findViewById(R.cadastroEmpresa.emailEditTxt);
 
-		btnAreaEmpresa = (Button) findViewById(R.cadastroCandidato.areaBtn);
-		btnSalvar = (Button) findViewById(R.cadastroCandidato.salvarBtn);
-		btnCancelar = (Button) findViewById(R.cadastroCandidato.cancelarBtn);
+		btnAreaEmpresa = (Button) findViewById(R.cadastroEmpresa.areaEmpresaBtn);
+		btnSalvar = (Button) findViewById(R.cadastroEmpresa.salvarBtn);
+		btnCancelar = (Button) findViewById(R.cadastroEmpresa.cancelarBtn);
 
 		btnAreaEmpresa.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				showCustomDialog();
+				dialogAreaAtuacao();
 			}
 		});
 		
@@ -69,9 +72,9 @@ public class AtividadeCadastroEmpresa extends Activity {
 
 			@Override
 			public void onClick(View v) {
-//				if (getDadosCandidato()) {
-//					dialogConfirma(candidatoModel);
-//				}
+				if(getDadosEmpresa()){
+					dialogConfirmaDadosEmpresa(empresaModel);
+				}
 			}
 		});
 
@@ -83,19 +86,43 @@ public class AtividadeCadastroEmpresa extends Activity {
 			}
 		});
 
+		
 	}
 
+	private boolean getDadosEmpresa() {
+		
+		empresaModel = new EmpresaModel();
+		
+		boolean camposOk = validate(new EditText[]{nomeEmpresa, enderecoEmpresa, emailEmpresa});
+		
+		if (camposOk) {
+			
+			empresaModel.setNomeEmpresa(nomeEmpresa.getText().toString());
+			empresaModel.setEnderecoEmpresa(enderecoEmpresa.getText().toString());
+			empresaModel.setEmailEmpresa(emailEmpresa.getText().toString());
+			
+			return true;
+		}else{
+			
+			campoObrigatorio();
+			return false;
+			
+		}
+		
+		
+	}
 
-	protected void dialogConfirma(CandidatoModel candidato) {
+	protected void dialogConfirmaDadosEmpresa(EmpresaModel empresa) {
 
 		AlertDialog.Builder alert = new AlertDialog.Builder(context);
-		alert.setTitle("Inserir o candidato?");
+		alert.setTitle("Inserir a empresa " + empresa.getNomeEmpresa() +" ?");
 		alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				CandidatoController.salvaCandidato(context, candidatoModel);
+				EmpresaController.salvaEmpresa(context,empresaModel );
 
-				int codCandidato = CandidatoController.getCodCandidato(context);
+				//retorno do idEmpresa
+				//int codCandidato = CandidatoController.getCodCandidato(context);
 
 				finish();
 			}
@@ -103,12 +130,11 @@ public class AtividadeCadastroEmpresa extends Activity {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-
 			}
 		});
 
 		ListView list = new ListView(context);
-		CandidatoAdapter adapter = new CandidatoAdapter(context, candidatoModel);
+		EmpresaAdapter adapter = new EmpresaAdapter(context, empresaModel);
 		list.setAdapter(adapter);
 
 		alert.setView(list);
@@ -136,7 +162,7 @@ public class AtividadeCadastroEmpresa extends Activity {
 	}
 
 
-	private void showCustomDialog() {
+	private void dialogAreaAtuacao() {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle("Title");

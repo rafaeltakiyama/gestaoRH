@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+itemEmpresa/nometxt"
+        style="@style/confirmaDadosCandidatoTxt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:text="@string/nome" />
+
+    <TextView
+        android:id="@+itemEmpresa/enderecotxt"
+        style="@style/confirmaDadosCandidatoTxt"
+        android:layout_alignLeft="@+itemEmpresa/nometxt"
+        android:layout_below="@+itemEmpresa/nometxt"
+        android:text="@string/endereco" />
+
+    <TextView
+        android:id="@+itemEmpresa/emailTxt"
+        style="@style/confirmaDadosCandidatoTxt"
+        android:layout_alignLeft="@+itemEmpresa/enderecotxt"
+        android:layout_below="@+itemEmpresa/enderecotxt"
+        android:text="@string/email" />
+
+    <TextView
+        android:id="@+itemEmpresa/areaTxt"
+        style="@style/confirmaDadosCandidatoTxt"
+        android:layout_alignLeft="@+itemEmpresa/emailTxt"
+        android:layout_below="@+itemEmpresa/emailTxt"
+        android:text="@string/area" />
+
+</RelativeLayout>
